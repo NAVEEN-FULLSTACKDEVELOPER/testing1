@@ -148,23 +148,27 @@ import {test,expect} from "@playwright/test";
 // })
 
 
-// test("errormsg",async({page})=>{
-// await page.goto("https://www.saucedemo.com/");
-// await page.locator('//input[@placeholder="Username"]');
-// await page.keyboard.press("Tab");
-// await page.keyboard.press("Tab");
-// await page.locator('[class="submit-button btn_action"]').click();
-// await page.locator('//h3[.="Epic sadface: Username is required"]').textContent();
-// await expect(await page.locator('//h3[.="Epic sadface: Username is required"]')).toBeVisible();
-// let varlenght=await page.locator('//h3[.="Epic sadface: Username is required"]').textContent();
-// if(varlenght.length>5){
-//     console.log("verfy")
-// }
-// else{
-//     console.log("not verified");
-//   }
-// await page.locator('//input[@placeholder="Username"]').fill("standard_user");
-// await page.locator('[placeholder="Password"]').fill("secret_sauce")
-// await page.locator('[class="submit-button btn_action"]').click();
-// await page.locator('(//button[@class="btn btn_primary btn_small btn_inventory "])[4]').click();
-// })
+test("errormsg",async({page})=>{
+await page.goto("https://www.saucedemo.com/");
+await page.locator('//input[@placeholder="Username"]');
+await page.keyboard.press("Tab");
+await page.keyboard.press("Tab");
+await page.locator('[class="submit-button btn_action"]').click();
+await page.locator('//h3[.="Epic sadface: Username is required"]').textContent();
+await expect(await page.locator('//h3[.="Epic sadface: Username is required"]')).toBeVisible();
+let varlenght=await page.locator('//h3[.="Epic sadface: Username is required"]').textContent();
+if(varlenght.length>5){
+    console.log("verfy")
+}
+else{
+    console.log("not verified");
+  }
+await page.locator('//input[@placeholder="Username"]').fill("standard_user");
+
+await page.locator('[placeholder="Password"]').fill("secret_sauce")
+await page.waitForTimeout(2000);
+await page.locator('[class="submit-button btn_action"]').click();
+await page.waitForTimeout(2000);
+await page.locator("//div[text()='Sauce Labs Fleece Jacket']/ancestor::div[@class='inventory_item']//button").click();
+await page.waitForTimeout(2000);
+})
